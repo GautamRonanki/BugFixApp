@@ -18,23 +18,25 @@ namespace Bugfixapp
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-        
+            // Composite key for DbUserValue
             modelBuilder.Entity<DbUserValue>()
                 .HasKey(uv => new { uv.UserId, uv.ValueId });
 
-            
+            // Define relationship: User -> UserValues
             modelBuilder.Entity<DbUserValue>()
                 .HasOne(uv => uv.User)
                 .WithMany(u => u.UserValues)
                 .HasForeignKey(uv => uv.UserId);
 
+            // Define relationship: Value -> UserValues
             modelBuilder.Entity<DbUserValue>()
                 .HasOne(uv => uv.Value)
                 .WithMany(v => v.UserValues)
                 .HasForeignKey(uv => uv.ValueId);
 
-        
+            // Primary key for DbValue
             modelBuilder.Entity<DbValue>().HasKey(v => v.ValueId);
+            // Primary key for DbUser
             modelBuilder.Entity<DbUser>().HasKey(u => u.UserId);
         }
     }
