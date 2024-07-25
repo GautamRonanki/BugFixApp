@@ -22,8 +22,8 @@ namespace Bugfixapp.Pages
 
         public async Task OnGet([FromServices] IUserRepository userRepo, Guid userId)
         {
-            var dbUser = userRepo.GetUser(userId);
-            var values = userRepo.GetValues();
+            DbUser = await userRepo.GetUser(userId); // Added await
+            Values = await userRepo.GetValues(); // Added await
         }
 
         public async Task<IActionResult> OnPost([FromServices] IUserRepository userRepo, Guid userId, List<Guid> values)

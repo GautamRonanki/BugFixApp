@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bugfixapp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77fac6d547b8258883fe0ff084b2fa1a9ab0c41f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bugfixapp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bugfixapp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
