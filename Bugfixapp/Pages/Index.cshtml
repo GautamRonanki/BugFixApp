@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+@{
+	ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+	<h1 class="display-4">Welcome</h1>
+	<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>User</th>
+			<th>Values</th>
+			<th>Edit</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var user in Model.Users)
+		{
+			<tr>
+				<td>@user.Name</td>
+				<td>
+					<ul>
+						@foreach (var value in user.UserValues.Select(uv => uv.UserId))
+						{
+							<li>@value</li>
+						}
+					</ul>
+				</td>
+				<td><a href="@Url.Page("EditUser", new { user.UserId })" class="btn btn-outline-primary">Edit</a></td>
+			</tr>
+		}
+	</tbody>
+</table>

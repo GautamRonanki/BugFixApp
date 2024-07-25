@@ -1,0 +1,21 @@
+﻿@page
+@model EditUserModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <div class="form-group">
+        @foreach (var v in Model.Values)
+        {
+            <div class="form-check">
+                <input type="checkbox" name="values" value="@v.ValueId" id="value-@v.ValueId" checked="@Model.DbUser.UserValues.Any(uv => uv.ValueId == v.ValueId)" />
+                <label for="value-@v.ValueId">@v.Title</label>
+            </div>
+        }
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </div>
+}
