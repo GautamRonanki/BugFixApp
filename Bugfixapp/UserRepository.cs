@@ -17,13 +17,18 @@ namespace Bugfixapp
 
         public Task<DbUser> GetUser(Guid userId)
         {
-            return context.Users.Include(u => u.UserValues)
+            return context.Users
+                .Include(u => u.UserValues)
+                .ThenInclude(uv => uv.Value) // Ensuring the Value is included
                 .FirstAsync(u => u.UserId == userId);
         }
 
         public async Task<List<DbUser>> GetUsers()
         {
-            return await context.Users.Include(u => u.UserValues).ToListAsync();
+            return await context.Users
+                .Include(u => u.UserValues)
+                .ThenInclude(uv => uv.Value) // Ensuring the Value is included
+                .ToListAsync();
         }
 
         public Task<List<DbValue>> GetValues()

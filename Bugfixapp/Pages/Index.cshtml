@@ -1,37 +1,45 @@
 ﻿@page
-@model IndexModel
+@model Bugfixapp.Pages.IndexModel
 @{
-	ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home page";
 }
 
 <div class="text-center">
-	<h1 class="display-4">Welcome</h1>
-	<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
 <table class="table">
-	<thead>
-		<tr>
-			<th>User</th>
-			<th>Values</th>
-			<th>Edit</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var user in Model.Users)
-		{
-			<tr>
-				<td>@user.Name</td>
-				<td>
-					<ul>
-						@foreach (var value in user.UserValues.Select(uv => uv.UserId))
-						{
-							<li>@value</li>
-						}
-					</ul>
-				</td>
-				<td><a href="@Url.Page("EditUser", new { user.UserId })" class="btn btn-outline-primary">Edit</a></td>
-			</tr>
-		}
-	</tbody>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Values</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.Name</td>
+                <td>
+                    <ul>
+                        @if (user.UserValues != null)
+                        {
+                            @foreach (var userValue in user.UserValues)
+                            {
+                                @if (userValue.Value != null)
+                                {
+                                    <li>@userValue.Value.Title</li> <!-- Correct reference userValue -->
+                                }
+                            }
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <a href="@Url.Page("EditUser", new { userId = user.UserId })" class="btn btn-outline-primary">Edit</a> <!-- Correct route parameter -->
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
