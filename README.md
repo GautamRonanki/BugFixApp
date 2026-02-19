@@ -1,5 +1,3 @@
-Here is the raw README text formatted for GitHub:
-
 ---
 
 **What did I do?**
