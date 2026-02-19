@@ -1,5 +1,3 @@
----
-
 **What did I do?**
 
 **Handled Multiple Warnings Before Application Setup:**
